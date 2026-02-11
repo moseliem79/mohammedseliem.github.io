@@ -1,269 +1,617 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Mohammed Seliem | Digital Transformation Consultant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <!-- Google Fonts & Font Awesome for icons and clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ------------- CSS RESET & CUSTOM PROPERTIES ------------- */
+        /*  Provides a consistent base and a calm, formal color palette  */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #f6f9fc;        /* Very soft background */
+            --color-card: #ffffff;       /* Pure white cards */
+            --color-primary: #1e3b5c;    /* Formal deep blue */
+            --color-accent: #3a6ea5;     /* Medium blue for accents */
+            --color-text-dark: #1e2a41;
+            --color-text-soft: #4a5b6e;
+            --color-text-light: #6c7a89;
+            --color-border: #e6edf4;
+            --shadow-sm: 0 8px 20px rgba(0,20,40,0.03), 0 2px 6px rgba(0,0,0,0.02);
+            --shadow-hover: 0 12px 28px rgba(0,20,40,0.06);
+            --radius-card: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.25s ease;
+        }
+
+        /* ------------- BASE STYLES ------------- */
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 40px auto;
-            max-width: 1000px;
-            line-height: 1.6;
-            color: #222;
-            background-color: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            padding: 24px 16px;
         }
 
-        h1, h2, h3 {
-            color: #1a1a1a;
+        /* Main container – centered, max-width for large screens */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        h1 {
-            margin-bottom: 5px;
+        /* ------------- CARD STYLES (sections, header) ------------- */
+        /* All content sections appear as white cards with subtle shadows */
+        section, .profile-header, .cv-links-card {
+            background-color: var(--color-card);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sm);
+            padding: 32px 32px;
+            margin-bottom: 28px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
         }
 
-        h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-            margin-top: 40px;
+        section:hover, .profile-header:hover, .cv-links-card:hover {
+            box-shadow: var(--shadow-hover);
         }
 
-        h3 {
-            margin-bottom: 5px;
+        /* ------------- PROFILE HEADER ------------- */
+        .profile-header {
+            background: linear-gradient(145deg, #ffffff, #fafcfe);
+            border-bottom: 4px solid var(--color-accent);
+            padding: 32px 32px;
         }
 
-        .header {
-            margin-bottom: 30px;
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
-        .subtitle {
-            font-weight: bold;
-            color: #444;
+        .profile-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--color-text-soft);
+            margin-bottom: 18px;
+            border-left: 5px solid var(--color-accent);
+            padding-left: 16px;
+            background: linear-gradient(to right, transparent, rgba(58,110,165,0.02));
         }
 
-        .contact {
-            margin-top: 5px;
-            color: #555;
+        /* ------------- CONTACT INFORMATION (icon grid) ------------- */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            margin-top: 12px;
+            align-items: center;
+            color: var(--color-text-soft);
+            font-size: 0.98rem;
         }
 
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--color-text-soft);
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* ------------- CV LINKS CARD (with action button) ------------- */
+        .cv-links-card {
+            background: linear-gradient(100deg, #f4f9fd, #ffffff);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 32px;
+        }
+
+        .cv-links-text {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 12px 24px;
+            font-size: 0.98rem;
+        }
+
+        .cv-link-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Primary button style */
+        .btn {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: none;
+            box-shadow: 0 4px 10px rgba(30,59,92,0.1);
+        }
+
+        .btn i {
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: #2a4d6e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(30,59,92,0.18);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 1.5px solid var(--color-primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* ------------- SECTION TITLES ------------- */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+            border-radius: 6px;
+            opacity: 0.6;
+        }
+
+        /* ------------- JOB HEADER (company + date) ------------- */
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 28px;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3b5c;
+            margin-bottom: 4px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: var(--color-accent);
+            font-size: 1.15rem;
+        }
+
+        .date-badge {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+            background: #f0f5fa;
+            padding: 5px 14px;
+            border-radius: 50px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .role-sub {
+            font-weight: 500;
+            color: var(--color-text-soft);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        /* ------------- CUSTOM LIST STYLES ------------- */
         ul {
-            margin-top: 10px;
+            list-style: none;
+            margin: 12px 0 8px;
         }
 
         li {
-            margin-bottom: 6px;
+            margin-bottom: 12px;
+            padding-left: 26px;
+            position: relative;
+            font-size: 0.98rem;
+            color: var(--color-text-soft);
         }
 
-        .role {
-            font-weight: bold;
+        li:before {
+            content: "▹";
+            position: absolute;
+            left: 6px;
+            color: var(--color-accent);
+            font-size: 1rem;
+            font-weight: 600;
         }
 
-        .date {
-            font-style: italic;
-            color: #555;
+        /* Nested lists for achievements – distinct bullet */
+        .sub-list {
+            margin-left: 18px;
+            margin-top: 8px;
+            margin-bottom: 18px;
         }
 
-        .cv-link {
-            margin-top: 15px;
-            font-size: 1.1em;
+        .sub-list li {
+            padding-left: 28px;
+            color: #556b7c;
+            font-size: 0.95rem;
         }
 
-        .cv-link a {
-            text-decoration: none;
-            color: #1a73e8;
-            font-weight: bold;
+        .sub-list li:before {
+            content: "◦";
+            font-size: 1.2rem;
+            left: 6px;
+            color: #5f8ab0;
         }
 
-        .cv-link a:hover {
-            text-decoration: underline;
+        /* ------------- MINI CARDS (education, certifications) ------------- */
+        .edu-item, .cert-item, .lang-item, .research-item {
+            background: #f9fcff;
+            padding: 18px 22px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 14px;
+            border-left: 4px solid var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .edu-item strong, .cert-item strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* ------------- MINI GRID (research interests, etc.) ------------- */
+        .grid-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .grid-mini .item {
+            background: #f9fcff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-soft);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-mini i {
+            color: var(--color-accent);
+        }
+
+        /* ------------- SOFT SEPARATOR ------------- */
+        hr {
+            border: 0;
+            border-top: 1px solid rgba(58,110,165,0.1);
+            margin: 30px 0 20px;
+        }
+
+        /* ------------- RESPONSIVE BREAKPOINTS ------------- */
+        /* Tablet & small desktop */
+        @media screen and (max-width: 700px) {
+            body {
+                padding: 16px 12px;
+            }
+            section, .profile-header, .cv-links-card {
+                padding: 28px 20px;
+            }
+            .profile-name {
+                font-size: 1.9rem;
+            }
+            .profile-title {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.45rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            .cv-links-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .job-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .date-badge {
+                align-self: flex-start;
+            }
+        }
+
+        /* Mobile phones */
+        @media screen and (max-width: 480px) {
+            .contact-grid {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .profile-name {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Print-friendly style (optional) */
+        @media print {
+            body { background: white; padding: 0.5in; }
+            section, .profile-header { box-shadow: none; border: 1px solid #ddd; }
         }
     </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- ========== PROFILE HEADER SECTION ========== -->
+        <div class="profile-header">
+            <h1 class="profile-name">Mohammed Seliem</h1>
+            <div class="profile-title">
+                <span>Digital Transformation Consultant · PhD Researcher, Software Engineering (XAI)</span>
+            </div>
+            
+            <!-- Contact information with icons for clarity -->
+            <div class="contact-grid">
+                <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi Arabia</span>
+                <span class="contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:+966546201266">+966 54 620 1266</a></span>
+                <span class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:moseliem31@gmail.com">moseliem31@gmail.com</a></span>
+            </div>
+        </div>
 
-<div class="header">
-    <h1>Mohammed Seliem</h1>
-    <div class="subtitle">Digital Transformation Consultant | PhD Researcher in Software Engineering</div>
-    <div class="contact">
-        Riyadh, Saudi Arabia | 📞 +966 54 620 1266 | 📧 moseliem31@gmail.com
+        <!-- ========== CV LINKS CARD ========== -->
+        <!-- Prominent card containing both short links and a call-to-action button -->
+        <div class="cv-links-card">
+            <div class="cv-links-text">
+                <span class="cv-link-item"><i class="fas fa-file-alt" style="color: var(--color-accent);"></i> <strong style="color: var(--color-primary);">Main CV:</strong> <a href="https://igit.me/uNNum" target="_blank" style="color: var(--color-text-soft); text-decoration: underline; text-underline-offset: 4px;">igit.me/uNNum</a></span>
+                <span class="cv-link-item"><i class="fas fa-globe" style="color: var(--color-accent);"></i> <strong style="color: var(--color-primary);">Alternative:</strong> <a href="https://moseliem79.github.io/mohammedseliem.github.io/" target="_blank" style="color: var(--color-text-soft); text-decoration: underline; text-underline-offset: 4px;">GitHub Page</a></span>
+            </div>
+            <a href="https://igit.me/uNNum" target="_blank" class="btn"><i class="fas fa-download"></i> View Full CV</a>
+        </div>
+
+        <!-- ========== PROFESSIONAL SUMMARY ========== -->
+        <section>
+            <h2 class="section-title">Professional Summary</h2>
+            <p style="margin-bottom: 18px; color: var(--color-text-soft); font-size: 1rem;">Digital Transformation Consultant and PhD Researcher in Software Engineering with extensive experience in business analysis, enterprise systems architecture, and AI-driven marketing automation. Proven ability to evaluate organizations holistically by analyzing business processes, operational workflows, market positioning, and digital maturity to design scalable, compliant, and value-driven digital solutions.</p>
+            <p style="margin-bottom: 18px; color: var(--color-text-soft);">Specialized in conducting on-site enterprise assessments, defining As-Is and To-Be enterprise architectures, and delivering structured digital transformation roadmaps aligned with business objectives, regulatory requirements, and client capabilities. Possesses strong expertise in ERP systems, enterprise software, data analysis, and system adoption strategies, supported by a deep understanding of market dynamics and customer behavior.</p>
+            <p style="color: var(--color-text-soft);">Current doctoral research focuses on Explainable Artificial Intelligence (XAI), aiming to design highly interpretable AI models through an innovative sector-based methodology (Sector-X), bridging the gap between academic research and real-world enterprise adoption. Brings a multidisciplinary background in software engineering, UX/UI design, marketing strategy, and project management, enabling effective translation of complex business and research requirements into high-impact technical and strategic outcomes.</p>
+        </section>
+
+        <!-- ========== CAREER OBJECTIVE ========== -->
+        <section>
+            <h2 class="section-title">Career Objective</h2>
+            <p style="color: var(--color-text-soft);">To leverage my combined expertise in digital transformation consulting, enterprise software architecture, and explainable artificial intelligence research to support organizations in optimizing operations, improving decision-making, and achieving sustainable growth through well-governed and interpretable digital solutions.</p>
+            <p style="color: var(--color-text-soft); margin-top: 18px;">I seek to contribute to organizations that value the alignment of technology, business strategy, regulatory compliance, and market realities, while advancing applied research in trustworthy and transparent AI systems suitable for enterprise and regulated environments.</p>
+        </section>
+
+        <!-- ========== PROFESSIONAL EXPERIENCE ========== -->
+        <section>
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <!-- Niyat (Current) -->
+            <div style="margin-bottom: 40px;">
+                <div class="job-header">
+                    <span class="company">Niyat – Saudi Arabia</span>
+                    <span class="date-badge"><i class="far fa-calendar-alt" style="margin-right: 6px;"></i>Jan 2025 – Present</span>
+                </div>
+                <div class="role-sub">Digital Transformation Consultant</div>
+                <ul>
+                    <li>Conduct on-site assessments for enterprises and business entities to evaluate business operations, workflows, and digital maturity.</li>
+                    <li>Perform in-depth business analysis with a strong focus on software systems and enterprise platforms.</li>
+                    <li>Gather and consolidate requirements through structured stakeholder interviews and data collection.</li>
+                    <li>Analyze the current-state (As-Is) business and IT landscape, including processes, systems, and integration gaps.</li>
+                    <li>Design Baseline Enterprise Architecture representing existing operational and technical environments.</li>
+                    <li>Propose Target Enterprise Architecture aligned with business strategy, scalability, regulatory compliance, and client capabilities.</li>
+                    <li>Recommend suitable enterprise systems and digital solutions, including ERP, CRM, sector-specific platforms, and analytics solutions.</li>
+                    <li>Define enhancement strategies for existing systems to improve efficiency, governance, and user adoption.</li>
+                    <li>Develop detailed digital transformation roadmaps, including phased implementation plans, milestones, timelines, and dependencies.</li>
+                    <li>Ensure alignment with local regulations, legal frameworks, data protection requirements, and quality standards.</li>
+                    <li>Evaluate organizational readiness, operational capacity, and expected ROI from digital system adoption.</li>
+                    <li>Support system positioning and go-to-market strategies, particularly for enterprise software solutions.</li>
+                    <li>Provide strategic consulting in long-term planning, operational optimization, and management advisory.</li>
+                    <li>Act as a regional representative and market enabler for technology vendors, supporting market entry, product evaluation, and expansion.</li>
+                    <li>Leverage prior UX/UI design expertise to prioritize system features, improve user experience, and maximize adoption.</li>
+                    <li>Apply strong project management capabilities to guide and oversee digital transformation initiatives end-to-end.</li>
+                </ul>
+            </div>
+
+            <!-- Techni IT Solutions -->
+            <div style="margin-bottom: 40px;">
+                <div class="job-header">
+                    <span class="company">Techni IT Solutions – Riyadh, Saudi Arabia</span>
+                    <span class="date-badge"><i class="far fa-calendar-alt"></i> Mar 2019 – Jun 2024</span>
+                </div>
+                <div class="role-sub">AI-Driven Marketing Automation & Consultant</div>
+                <ul>
+                    <li>Led end-to-end marketing and customer enablement strategies for ERP and SaaS products.</li>
+                    <li>Developed AI-powered predictive models to optimize marketing timing, logistics efficiency, and customer satisfaction.</li>
+                    <li>Designed intelligent onboarding and training campaigns to increase ERP system adoption.</li>
+                    <li>Oversaw multi-channel marketing campaigns and performance measurement, delivering data-driven recommendations to management.</li>
+                    <li>Coordinated between clients, technical teams, and marketing units to ensure consistent brand messaging and positioning.</li>
+                </ul>
+                <ul class="sub-list">
+                    <li><strong>Key Achievements:</strong></li>
+                    <li>Increased customer satisfaction by 70% through targeted post-sales marketing initiatives.</li>
+                    <li>Improved operational efficiency and campaign ROI using AI-driven analytics.</li>
+                    <li>Enabled advanced customer segmentation for strategic targeting, enhancing engagement and service quality.</li>
+                </ul>
+            </div>
+
+            <!-- Design Asset -->
+            <div style="margin-bottom: 40px;">
+                <div class="job-header">
+                    <span class="company">Design Asset – Riyadh, Saudi Arabia</span>
+                    <span class="date-badge"><i class="far fa-calendar-alt"></i> Jan 2012 – Dec 2018</span>
+                </div>
+                <div class="role-sub">UX/UI Designer & Visual Marketing Specialist</div>
+                <ul>
+                    <li>Developed visual assets and marketing content for ERP dashboards and B2B platforms.</li>
+                    <li>Managed social media campaigns to increase brand awareness and user engagement.</li>
+                    <li>Applied SEO best practices to improve online visibility and conversion rates.</li>
+                </ul>
+                <ul class="sub-list">
+                    <li><strong>Key Achievements:</strong></li>
+                    <li>Doubled social media followers and increased engagement by 300%.</li>
+                    <li>Increased organic traffic by 70% through SEO optimization.</li>
+                    <li>Implemented an intelligent post-sales follow-up system, achieving 15% sales growth and 50% improvement in customer satisfaction.</li>
+                </ul>
+            </div>
+
+            <!-- Compass Egypt -->
+            <div style="margin-bottom: 8px;">
+                <div class="job-header">
+                    <span class="company">Compass Egypt – Cairo, Egypt</span>
+                    <span class="date-badge"><i class="far fa-calendar-alt"></i> Mar 2005 – Nov 2011</span>
+                </div>
+                <div class="role-sub">Unit Manager – Hospitality Services</div>
+                <ul>
+                    <li>Managed large-scale operations across aviation, healthcare, and oil & gas sectors.</li>
+                    <li>Led operations, logistics, and customer service for sensitive and remote sites.</li>
+                    <li>Coordinated cross-functional teams and ensured compliance with safety regulations and ISO standards.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== TEACHING, TRAINING & PROFESSIONAL LECTURING ========== -->
+        <section>
+            <h2 class="section-title">Teaching, Training & Professional Lecturing</h2>
+            <div class="edu-item" style="border-left-color: #4a7c9b; margin-bottom: 24px;">
+                <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--color-primary); margin-bottom: 16px;">Software Architecture & Enterprise Systems – Professional Lecturer</h3>
+                <ul>
+                    <li>Prepared and delivered structured professional training programs in <strong>Software Architecture</strong>.</li>
+                    <li>Covered core architectural concepts, roles, and responsibilities within modern software systems.</li>
+                    <li>Explained major architectural styles and integration models, including Monolithic, Layered, Microservices, Event-Driven Architecture, and SOA.</li>
+                    <li>Delivered in-depth instruction on evaluating and designing for <strong>Quality Attributes</strong>, such as performance, security, reliability, scalability, and maintainability.</li>
+                    <li>Guided architecture-level decision making through trade-off analysis, technical constraints, and business considerations.</li>
+                    <li>Introduced architecture documentation standards and models for effective stakeholder communication.</li>
+                    <li>Integrated real-world enterprise case studies and digital transformation scenarios to bridge theoretical foundations with practical implementation.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== SOFTWARE ENGINEERING & PROJECT MANAGEMENT INSTRUCTIONAL CAPABILITY ========== -->
+        <section>
+            <h2 class="section-title">Software Engineering & Project Management Instructional Capability</h2>
+            <div class="edu-item" style="border-left-color: #4a7c9b;">
+                <ul>
+                    <li>Capable of delivering professional instruction in core <strong>Software Engineering</strong> principles and practices.</li>
+                    <li>Teaching experience and instructional capability in <strong>Software Development Life Cycle (SDLC)</strong> models.</li>
+                    <li>Explains and contextualizes <strong>Agile methodologies</strong>, including Scrum and Kanban, within enterprise and delivery environments.</li>
+                    <li>Provides structured instruction in project management fundamentals, governance models, and execution control.</li>
+                    <li>Delivers analytical instruction on quality attributes, architectural quality evaluation, and system-level trade-offs.</li>
+                    <li>Integrates <strong>User Experience (UX)</strong> principles into software and architectural design discussions.</li>
+                    <li>Instructional approach emphasizes structured reasoning, decision rationale, and alignment between technical design, business objectives, and organizational constraints.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== EDUCATION ========== -->
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="edu-item"><strong>PhD Researcher in Software Engineering</strong> | 2025 – Present<br>Faculty of Graduate Studies for Statistical Research, Cairo University<br>Research focus: Explainable AI (XAI) – Sector-X Methodology.</div>
+            <div class="edu-item"><strong>M.Sc. in Software Engineering</strong> | 2025<br>Faculty of Graduate Studies for Statistical Research, Cairo University</div>
+            <div class="edu-item"><strong>Postgraduate Diploma in Software Engineering</strong> | 2022<br>Faculty of Graduate Studies for Statistical Research, Cairo University</div>
+            <div class="edu-item"><strong>B.Sc. in Hotel Management</strong> | 2004<br>Faculty of Tourism & Hotels, Helwan University, Egypt</div>
+        </section>
+
+        <!-- ========== CERTIFICATIONS & LANGUAGES ========== -->
+        <section>
+            <h2 class="section-title">Certifications & Languages</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--color-primary); margin-bottom: 16px;"><i class="fas fa-certificate" style="color: var(--color-accent); margin-right: 8px;"></i>Certifications</h3>
+                    <ul>
+                        <li>Advanced Project Management</li>
+                        <li>IELTS Academic – Band 6</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--color-primary); margin-bottom: 16px;"><i class="fas fa-language" style="color: var(--color-accent); margin-right: 8px;"></i>Languages</h3>
+                    <ul>
+                        <li>Arabic: Native</li>
+                        <li>English: Professional Working Proficiency</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== RESEARCH INTERESTS ========== -->
+        <section>
+            <h2 class="section-title">Research Interests</h2>
+            <div class="grid-mini">
+                <span class="item"><i class="fas fa-robot"></i> Explainable AI (XAI)</span>
+                <span class="item"><i class="fas fa-chart-line"></i> Interpretable Machine Learning</span>
+                <span class="item"><i class="fas fa-shield-alt"></i> Trustworthy & Responsible AI</span>
+                <span class="item"><i class="fas fa-building"></i> Enterprise AI Systems</span>
+                <span class="item"><i class="fas fa-decision-tree"></i> Decision Support Systems</span>
+            </div>
+        </section>
+
+        <!-- ========== FOOTER / SIGNATURE ========== -->
+        <div style="text-align: center; margin-top: 32px; color: var(--color-text-light); font-size: 0.85rem; border-top: 1px solid var(--color-border); padding-top: 24px;">
+            <i class="fas fa-code-branch" style="margin: 0 4px;"></i> Mohammed Seliem · Digital Transformation & XAI Research · 2025 
+        </div>
     </div>
-</div>
-
-<div class="cv-link">
-    📄 Read My CV: <a href="https://igit.me/uNNum" target="_blank">https://igit.me/uNNum</a><br>
-    🌐 أو الرابط البديل:
-    <a href="https://moseliem79.github.io/mohammedseliem.github.io/" target="_blank">
-        https://moseliem79.github.io/mohammedseliem.github.io/
-    </a>
-</div>
-
-<h2>Professional Summary</h2>
-<p>
-Digital Transformation Consultant and PhD Researcher in Software Engineering with extensive experience in business analysis,
-enterprise systems architecture, and AI-driven marketing automation. Proven ability to evaluate organizations holistically
-by analyzing business processes, operational workflows, market positioning, and digital maturity to design scalable,
-compliant, and value-driven digital solutions.
-</p>
-<p>
-Specialized in conducting on-site enterprise assessments, defining As-Is and To-Be enterprise architectures, and delivering
-structured digital transformation roadmaps aligned with business objectives, regulatory requirements, and client capabilities.
-Possesses strong expertise in ERP systems, enterprise software, data analysis, and system adoption strategies, supported by a
-deep understanding of market dynamics and customer behavior.
-</p>
-<p>
-Current doctoral research focuses on Explainable Artificial Intelligence (XAI), aiming to design highly interpretable AI models
-through an innovative sector-based methodology (Sector-X), bridging the gap between academic research and real-world enterprise
-adoption. Brings a multidisciplinary background in software engineering, UX/UI design, marketing strategy, and project
-management, enabling effective translation of complex business and research requirements into high-impact technical and
-strategic outcomes.
-</p>
-
-<h2>Career Objective</h2>
-<p>
-To leverage my combined expertise in digital transformation consulting, enterprise software architecture, and explainable
-artificial intelligence research to support organizations in optimizing operations, improving decision-making, and achieving
-sustainable growth through well-governed and interpretable digital solutions.
-</p>
-<p>
-I seek to contribute to organizations that value the alignment of technology, business strategy, regulatory compliance, and
-market realities, while advancing applied research in trustworthy and transparent AI systems suitable for enterprise and
-regulated environments.
-</p>
-
-<h2>Teaching, Training &amp; Professional Lecturing</h2>
-
-<h3>Software Architecture &amp; Enterprise Systems – Professional Lecturer</h3>
-<ul>
-    <li>Prepared and delivered structured professional training programs in <strong>Software Architecture</strong>.</li>
-    <li>Covered core architectural concepts, roles, and responsibilities within modern software systems.</li>
-    <li>Explained major architectural styles and integration models, including Monolithic, Layered, Microservices,
-        Event-Driven Architecture, and SOA.</li>
-    <li>Delivered in-depth instruction on evaluating and designing for <strong>Quality Attributes</strong>, such as performance,
-        security, reliability, scalability, and maintainability.</li>
-    <li>Guided architecture-level decision making through trade-off analysis, technical constraints, and business considerations.</li>
-    <li>Introduced architecture documentation standards and models for effective stakeholder communication.</li>
-    <li>Integrated real-world enterprise case studies and digital transformation scenarios to bridge theoretical foundations
-        with practical implementation.</li>
-</ul>
-
-<h2>Software Engineering &amp; Project Management Instructional Capability</h2>
-<ul>
-    <li>Capable of delivering professional instruction in core <strong>Software Engineering</strong> principles and practices.</li>
-    <li>Teaching experience and instructional capability in <strong>Software Development Life Cycle (SDLC)</strong> models.</li>
-    <li>Explains and contextualizes <strong>Agile methodologies</strong>, including Scrum and Kanban, within enterprise and
-        delivery environments.</li>
-    <li>Provides structured instruction in project management fundamentals, governance models, and execution control.</li>
-    <li>Delivers analytical instruction on quality attributes, architectural quality evaluation, and system-level trade-offs.</li>
-    <li>Integrates <strong>User Experience (UX)</strong> principles into software and architectural design discussions.</li>
-    <li>Instructional approach emphasizes structured reasoning, decision rationale, and alignment between technical design,
-        business objectives, and organizational constraints.</li>
-</ul>
-
-<h2>Professional Experience</h2>
-
-<h3>Niyat – Saudi Arabia</h3>
-<div class="role">Digital Transformation Consultant</div>
-<div class="date">Jan 2025 – Present</div>
-<ul>
-    <li>Conduct on-site assessments for enterprises and business entities to evaluate business operations, workflows, and digital maturity.</li>
-    <li>Perform in-depth business analysis with a strong focus on software systems and enterprise platforms.</li>
-    <li>Gather and consolidate requirements through structured stakeholder interviews and data collection.</li>
-    <li>Analyze the current-state (As-Is) business and IT landscape, including processes, systems, and integration gaps.</li>
-    <li>Design Baseline Enterprise Architecture representing existing operational and technical environments.</li>
-    <li>Propose Target Enterprise Architecture aligned with business strategy, scalability, regulatory compliance, and client capabilities.</li>
-    <li>Recommend suitable enterprise systems and digital solutions, including ERP, CRM, sector-specific platforms, and analytics solutions.</li>
-    <li>Define enhancement strategies for existing systems to improve efficiency, governance, and user adoption.</li>
-    <li>Develop detailed digital transformation roadmaps, including phased implementation plans, milestones, timelines, and dependencies.</li>
-    <li>Ensure alignment with local regulations, legal frameworks, data protection requirements, and quality standards.</li>
-    <li>Evaluate organizational readiness, operational capacity, and expected ROI from digital system adoption.</li>
-    <li>Support system positioning and go-to-market strategies, particularly for enterprise software solutions.</li>
-    <li>Provide strategic consulting in long-term planning, operational optimization, and management advisory.</li>
-    <li>Act as a regional representative and market enabler for technology vendors, supporting market entry, product evaluation, and expansion.</li>
-    <li>Leverage prior UX/UI design expertise to prioritize system features, improve user experience, and maximize adoption.</li>
-    <li>Apply strong project management capabilities to guide and oversee digital transformation initiatives end-to-end.</li>
-</ul>
-
-<h3>Techni IT Solutions – Riyadh, Saudi Arabia</h3>
-<div class="role">AI-Driven Marketing Automation &amp; Consultant</div>
-<div class="date">Mar 2019 – Jun 2024</div>
-<ul>
-    <li>Led end-to-end marketing and customer enablement strategies for ERP and SaaS products.</li>
-    <li>Developed AI-powered predictive models to optimize marketing timing, logistics efficiency, and customer satisfaction.</li>
-    <li>Designed intelligent onboarding and training campaigns to increase ERP system adoption.</li>
-    <li>Oversaw multi-channel marketing campaigns and performance measurement, delivering data-driven recommendations to management.</li>
-    <li>Coordinated between clients, technical teams, and marketing units to ensure consistent brand messaging and positioning.</li>
-</ul>
-<ul>
-    <li><strong>Key Achievements:</strong></li>
-    <li>Increased customer satisfaction by 70% through targeted post-sales marketing initiatives.</li>
-    <li>Improved operational efficiency and campaign ROI using AI-driven analytics.</li>
-    <li>Enabled advanced customer segmentation for strategic targeting, enhancing engagement and service quality.</li>
-</ul>
-
-<h3>Design Asset – Riyadh, Saudi Arabia</h3>
-<div class="role">UX/UI Designer &amp; Visual Marketing Specialist</div>
-<div class="date">Jan 2012 – Dec 2018</div>
-<ul>
-    <li>Developed visual assets and marketing content for ERP dashboards and B2B platforms.</li>
-    <li>Managed social media campaigns to increase brand awareness and user engagement.</li>
-    <li>Applied SEO best practices to improve online visibility and conversion rates.</li>
-</ul>
-<ul>
-    <li><strong>Key Achievements:</strong></li>
-    <li>Doubled social media followers and increased engagement by 300%.</li>
-    <li>Increased organic traffic by 70% through SEO optimization.</li>
-    <li>Implemented an intelligent post-sales follow-up system, achieving 15% sales growth and 50% improvement in customer satisfaction.</li>
-</ul>
-
-<h3>Compass Egypt – Cairo, Egypt</h3>
-<div class="role">Unit Manager – Hospitality Services</div>
-<div class="date">Mar 2005 – Nov 2011</div>
-<ul>
-    <li>Managed large-scale operations across aviation, healthcare, and oil &amp; gas sectors.</li>
-    <li>Led operations, logistics, and customer service for sensitive and remote sites.</li>
-    <li>Coordinated cross-functional teams and ensured compliance with safety regulations and ISO standards.</li>
-</ul>
-
-<h2>Education</h2>
-<ul>
-    <li><strong>PhD Researcher in Software Engineering</strong> | 2025 – Present<br>
-        Faculty of Graduate Studies for Statistical Research, Cairo University<br>
-        Research focus: Explainable AI (XAI) – Sector-X Methodology.
-    </li>
-    <li><strong>M.Sc. in Software Engineering</strong> | 2025<br>
-        Faculty of Graduate Studies for Statistical Research, Cairo University
-    </li>
-    <li><strong>Postgraduate Diploma in Software Engineering</strong> | 2022<br>
-        Faculty of Graduate Studies for Statistical Research, Cairo University
-    </li>
-    <li><strong>B.Sc. in Hotel Management</strong> | 2004<br>
-        Faculty of Tourism &amp; Hotels, Helwan University, Egypt
-    </li>
-</ul>
-
-<h2>Certifications</h2>
-<ul>
-    <li>Advanced Project Management</li>
-    <li>IELTS Academic – Band 6</li>
-</ul>
-
-<h2>Languages</h2>
-<ul>
-    <li>Arabic: Native</li>
-    <li>English: Professional Working Proficiency</li>
-</ul>
-
-<h2>Research Interests</h2>
-<ul>
-    <li>Explainable Artificial Intelligence (XAI)</li>
-    <li>Interpretable Machine Learning Models</li>
-    <li>Trustworthy and Responsible AI</li>
-    <li>Enterprise AI Systems and Decision Support</li>
-</ul>
-
+    <!-- End container -->
 </body>
 </html>
-```
