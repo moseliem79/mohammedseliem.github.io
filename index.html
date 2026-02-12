@@ -31,6 +31,11 @@
             --transition: all 0.25s ease;
         }
 
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-bg);
@@ -142,7 +147,9 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            transition: var(--transition);
+            transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+                        transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+                        box-shadow 0.4s ease;
             border: none;
             box-shadow: 0 6px 14px rgba(30,59,92,0.14);
         }
@@ -155,6 +162,86 @@
             background-color: #2a4d6e;
             transform: translateY(-3px);
             box-shadow: 0 12px 22px rgba(30,59,92,0.2);
+        }
+
+        /* ------------- ACADEMIC NAVIGATION (HORIZONTAL PILLS) ------------- */
+        .nav-container {
+            margin-bottom: 28px;
+            background-color: var(--color-card);
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            padding: 16px 24px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .nav-container:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            cursor: pointer;
+            text-align: center;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-hamburger:hover {
+            color: var(--color-accent);
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li a {
+            display: inline-block;
+            padding: 10px 22px;
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: var(--color-text-soft);
+            background: transparent;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+                        color 0.3s ease,
+                        transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+                        box-shadow 0.4s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav-menu li a:hover {
+            background-color: var(--color-primary);
+            color: white;
+            transform: scale(1.08);
+            box-shadow: 0 6px 12px rgba(30,59,92,0.12);
+            border-color: var(--color-primary);
+        }
+
+        .nav-menu li a:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
         }
 
         .section-title {
@@ -303,37 +390,71 @@
             margin: 30px 0 20px;
         }
 
-        /* ------------- RESPONSIVE ------------- */
+        /* ------------- RESPONSIVE: MOBILE HAMBURGER ------------- */
         @media screen and (max-width: 700px) {
             body { padding: 16px 12px; }
-            section, .profile-header, .cv-download-card { padding: 28px 20px; }
+            section, .profile-header, .cv-download-card, .nav-container { padding: 28px 20px; }
             .profile-name { font-size: 1.9rem; }
             .profile-title { font-size: 1.1rem; }
             .section-title { font-size: 1.45rem; }
             .btn { padding: 12px 28px; width: 100%; justify-content: center; }
             .job-header { flex-direction: column; gap: 8px; }
             .date-badge { align-self: flex-start; }
+
+            /* Hamburger navigation */
+            .nav-hamburger {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 8px;
+                margin-top: 16px;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu li a {
+                width: 100%;
+                text-align: center;
+                white-space: normal;
+                padding: 12px 16px;
+                background: #f0f5fa;
+                border-radius: 40px;
+                transition: background-color 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+                            color 0.3s ease,
+                            transform 0.3s ease;
+            }
+            .nav-menu li a:hover {
+                background-color: var(--color-primary);
+                color: white;
+                transform: scale(1.02);
+            }
+            .nav-toggle:checked ~ .nav-menu {
+                display: flex;
+            }
+            .nav-container {
+                border-radius: 20px;
+            }
         }
 
         @media screen and (max-width: 480px) {
             .contact-grid { flex-direction: column; align-items: flex-start; gap: 12px; }
             .profile-name { font-size: 1.7rem; }
+            .nav-menu li a { font-size: 0.95rem; }
         }
 
-        /* ------------- PRINT STYLES – PROFESSIONAL PDF EXPORT ------------- */
+        /* ------------- PRINT STYLES – HIDE NAVIGATION ------------- */
         @media print {
-            /* Force background colors to print */
             * {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-
-            /* Reset page margins and background */
             @page {
                 margin: 0.75in;
                 size: A4;
             }
-
             body {
                 background: white;
                 padding: 0;
@@ -342,22 +463,18 @@
                 font-size: 11pt;
                 line-height: 1.5;
             }
-
             .container {
                 max-width: 100%;
                 margin: 0;
                 padding: 0;
             }
-
-            /* Hide interactive elements */
             .cv-download-card,
             .btn,
+            .nav-container,
             hr,
-            div[style*="text-align: center"] {  /* Footer */
+            div[style*="text-align: center"] {
                 display: none !important;
             }
-
-            /* Remove card styles for clean print */
             section, .profile-header {
                 box-shadow: none;
                 border: none;
@@ -367,130 +484,23 @@
                 border-radius: 0;
                 backdrop-filter: none;
             }
-
-            /* Adjust profile header */
             .profile-header {
                 border-bottom: 2px solid #1e3b5c;
                 padding-bottom: 0.2in;
                 margin-bottom: 0.2in;
             }
-
-            .profile-name {
-                color: black;
-                font-size: 24pt;
-                letter-spacing: -0.5px;
-            }
-
-            .profile-title {
-                border-left: 4px solid #3a6ea5;
-                color: #333;
-                background: none;
-                padding-left: 12px;
-                margin-top: 6px;
-            }
-
-            /* Convert accent colors to grayscale-friendly but keep structure */
-            .section-title {
-                color: black;
-                font-size: 16pt;
-                padding-bottom: 6px;
-                margin-bottom: 16px;
-            }
-
-            .section-title::after {
-                background: #1e3b5c;
-                opacity: 0.8;
-                width: 50px;
-                height: 2px;
-            }
-
-            /* Remove background from badges and mini cards */
-            .date-badge {
-                background: none;
-                border: 1px solid #aaa;
-                color: black;
-                padding: 2px 10px;
-                font-weight: normal;
-            }
-
-            .company {
-                color: #1e3b5c;
-                font-weight: 700;
-            }
-
-            /* Lists */
-            li {
-                color: black;
-                padding-left: 20px;
-                margin-bottom: 6px;
-            }
-
-            li:before {
-                color: #1e3b5c;
-            }
-
-            .sub-list li:before {
-                color: #1e3b5c;
-            }
-
-            /* Education and other mini-cards */
-            .edu-item {
-                background: none;
-                border-left: 3px solid #1e3b5c;
-                padding: 10px 0 10px 16px;
-                margin-bottom: 12px;
-                box-shadow: none;
-            }
-
-            .grid-mini .item {
-                background: none;
-                border: 1px solid #ccc;
-                border-radius: 30px;
-                padding: 6px 16px;
-                color: black;
-            }
-
-            .grid-mini i {
-                color: #1e3b5c;
-            }
-
-            /* Ensure links are printed as plain text */
-            a {
-                text-decoration: none;
-                color: black;
-            }
-
-            .contact-item a {
-                border-bottom: none;
-                color: black;
-            }
-
-            /* Prevent page breaks inside sections and list items */
-            h2, h3, .job-header, .edu-item, ul, li {
-                page-break-inside: avoid;
-            }
-
-            /* Force page breaks before major sections if needed */
-            section {
-                page-break-before: auto;
-            }
-
-            /* Keep profile and summary together */
-            .profile-header {
-                page-break-after: avoid;
-            }
-
-            /* Adjust spacing */
-            .job-header {
-                margin-top: 12px;
-            }
-
-            /* Remove icons from contact in print? optional */
-            .contact-item i {
-                color: black;
-                width: auto;
-                margin-right: 4px;
-            }
+            .profile-name { color: black; font-size: 24pt; }
+            .profile-title { border-left: 4px solid #3a6ea5; color: #333; background: none; }
+            .section-title { color: black; font-size: 16pt; }
+            .section-title::after { background: #1e3b5c; }
+            .date-badge { background: none; border: 1px solid #aaa; color: black; }
+            .company { color: #1e3b5c; }
+            li { color: black; }
+            li:before { color: #1e3b5c; }
+            .edu-item { background: none; border-left: 3px solid #1e3b5c; }
+            .grid-mini .item { background: none; border: 1px solid #ccc; color: black; }
+            a { text-decoration: none; color: black; }
+            .contact-item a { border-bottom: none; color: black; }
         }
     </style>
 </head>
@@ -509,15 +519,32 @@
             </div>
         </div>
 
-        <!-- DOWNLOAD BUTTON (hidden in print) -->
+        <!-- DOWNLOAD BUTTON -->
         <div class="cv-download-card">
             <a href="Mohammed_Seliem_CV.pdf" download class="btn">
                 <i class="fas fa-file-pdf"></i> Download CV (PDF)
             </a>
         </div>
 
+        <!-- ========== ACADEMIC NAVIGATION MENU ========== -->
+        <div class="nav-container">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul class="nav-menu">
+                <li><a href="#professional-summary"><i class="fas fa-user-tie" style="margin-right: 8px;"></i>Professional Summary</a></li>
+                <li><a href="#career-objective"><i class="fas fa-bullseye" style="margin-right: 8px;"></i>Career Objective</a></li>
+                <li><a href="#professional-teaching"><i class="fas fa-chalkboard-teacher" style="margin-right: 8px;"></i>Professional Teaching & Training</a></li>
+                <li><a href="#professional-experience"><i class="fas fa-briefcase" style="margin-right: 8px;"></i>Professional Experience</a></li>
+                <li><a href="#education"><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>Education</a></li>
+                <li><a href="#certifications-languages"><i class="fas fa-certificate" style="margin-right: 8px;"></i>Certifications & Languages</a></li>
+                <li><a href="#research-interests"><i class="fas fa-flask" style="margin-right: 8px;"></i>Research Interests</a></li>
+            </ul>
+        </div>
+
         <!-- PROFESSIONAL SUMMARY -->
-        <section>
+        <section id="professional-summary">
             <h2 class="section-title">Professional Summary</h2>
             <p style="margin-bottom: 18px; color: var(--color-text-soft);">Digital Transformation Consultant and PhD Researcher in Software Engineering with extensive experience in business analysis, enterprise systems architecture, and AI-driven marketing automation. Proven ability to evaluate organizations holistically by analyzing business processes, operational workflows, market positioning, and digital maturity to design scalable, compliant, and value-driven digital solutions.</p>
             <p style="margin-bottom: 18px; color: var(--color-text-soft);">Specialized in conducting on-site enterprise assessments, defining As-Is and To-Be enterprise architectures, and delivering structured digital transformation roadmaps aligned with business objectives, regulatory requirements, and client capabilities. Possesses strong expertise in ERP systems, enterprise software, data analysis, and system adoption strategies, supported by a deep understanding of market dynamics and customer behavior.</p>
@@ -525,15 +552,16 @@
         </section>
 
         <!-- CAREER OBJECTIVE -->
-        <section>
+        <section id="career-objective">
             <h2 class="section-title">Career Objective</h2>
             <p style="color: var(--color-text-soft);">To leverage my combined expertise in digital transformation consulting, enterprise software architecture, and explainable artificial intelligence research to support organizations in optimizing operations, improving decision-making, and achieving sustainable growth through well-governed and interpretable digital solutions.</p>
             <p style="color: var(--color-text-soft); margin-top: 18px;">I seek to contribute to organizations that value the alignment of technology, business strategy, regulatory compliance, and market realities, while advancing applied research in trustworthy and transparent AI systems suitable for enterprise and regulated environments.</p>
         </section>
 
-        <!-- TEACHING, TRAINING & PROFESSIONAL LECTURING -->
-        <section>
-            <h2 class="section-title">Teaching, Training & Professional Lecturing</h2>
+        <!-- ========== PROFESSIONAL TEACHING & TRAINING (COMBINED) ========== -->
+        <section id="professional-teaching">
+            <h2 class="section-title">Professional Teaching & Training</h2>
+            <!-- Part 1: Software Architecture & Enterprise Systems -->
             <div class="edu-item" style="border-left-color: #4a7c9b; margin-bottom: 24px;">
                 <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--color-primary); margin-bottom: 16px;">Software Architecture & Enterprise Systems – Professional Lecturer</h3>
                 <ul>
@@ -546,12 +574,9 @@
                     <li>Integrated real-world enterprise case studies and digital transformation scenarios to bridge theoretical foundations with practical implementation.</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- SOFTWARE ENGINEERING & PROJECT MANAGEMENT INSTRUCTIONAL CAPABILITY -->
-        <section>
-            <h2 class="section-title">Software Engineering & Project Management Instructional Capability</h2>
+            <!-- Part 2: Software Engineering & Project Management Instructional Capability -->
             <div class="edu-item" style="border-left-color: #4a7c9b;">
+                <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--color-primary); margin-bottom: 16px;">Software Engineering & Project Management – Instructional Capability</h3>
                 <ul>
                     <li>Capable of delivering professional instruction in core <strong>Software Engineering</strong> principles and practices.</li>
                     <li>Teaching experience and instructional capability in <strong>Software Development Life Cycle (SDLC)</strong> models.</li>
@@ -565,7 +590,7 @@
         </section>
 
         <!-- PROFESSIONAL EXPERIENCE -->
-        <section>
+        <section id="professional-experience">
             <h2 class="section-title">Professional Experience</h2>
             
             <div style="margin-bottom: 40px;">
@@ -649,7 +674,7 @@
         </section>
 
         <!-- EDUCATION -->
-        <section>
+        <section id="education">
             <h2 class="section-title">Education</h2>
             <div class="edu-item"><strong>PhD Researcher in Software Engineering</strong> | 2025 – Present<br>Faculty of Graduate Studies for Statistical Research, Cairo University<br>Research focus: Explainable AI (XAI) – Sector-X Methodology.</div>
             <div class="edu-item"><strong>M.Sc. in Software Engineering</strong> | 2025<br>Faculty of Graduate Studies for Statistical Research, Cairo University</div>
@@ -658,7 +683,7 @@
         </section>
 
         <!-- CERTIFICATIONS & LANGUAGES -->
-        <section>
+        <section id="certifications-languages">
             <h2 class="section-title">Certifications & Languages</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
                 <div>
@@ -679,7 +704,7 @@
         </section>
 
         <!-- RESEARCH INTERESTS -->
-        <section>
+        <section id="research-interests">
             <h2 class="section-title">Research Interests</h2>
             <div class="grid-mini">
                 <span class="item"><i class="fas fa-robot"></i> Explainable AI (XAI)</span>
