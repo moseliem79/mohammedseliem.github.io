@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Mohammed Seliem | Digital Transformation Consultant</title>
-    <!-- Google Fonts & Font Awesome for icons and clean typography -->
+    <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ------------- CSS RESET & CUSTOM PROPERTIES ------------- */
-        /* Provides a consistent base and a calm, formal color palette */
         * {
             margin: 0;
             padding: 0;
@@ -17,10 +16,10 @@
         }
 
         :root {
-            --color-bg: #f6f9fc;        /* Very soft background */
-            --color-card: #ffffff;       /* Pure white cards */
-            --color-primary: #1e3b5c;    /* Formal deep blue */
-            --color-accent: #3a6ea5;     /* Medium blue for accents */
+            --color-bg: #f6f9fc;
+            --color-card: #ffffff;
+            --color-primary: #1e3b5c;
+            --color-accent: #3a6ea5;
             --color-text-dark: #1e2a41;
             --color-text-soft: #4a5b6e;
             --color-text-light: #6c7a89;
@@ -32,7 +31,6 @@
             --transition: all 0.25s ease;
         }
 
-        /* ------------- BASE STYLES ------------- */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-bg);
@@ -44,14 +42,11 @@
             padding: 24px 16px;
         }
 
-        /* Main container – centered, max-width for large screens */
         .container {
             max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* ------------- CARD STYLES (sections, header) ------------- */
-        /* All content sections appear as white cards with subtle shadows */
         section, .profile-header, .cv-download-card {
             background-color: var(--color-card);
             border-radius: var(--radius-card);
@@ -67,7 +62,6 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ------------- PROFILE HEADER ------------- */
         .profile-header {
             background: linear-gradient(145deg, #ffffff, #fafcfe);
             border-bottom: 4px solid var(--color-accent);
@@ -93,7 +87,6 @@
             background: linear-gradient(to right, transparent, rgba(58,110,165,0.02));
         }
 
-        /* ------------- CONTACT INFORMATION (icon grid) ------------- */
         .contact-grid {
             display: flex;
             flex-wrap: wrap;
@@ -129,16 +122,14 @@
             border-bottom-color: var(--color-accent);
         }
 
-        /* ------------- DOWNLOAD CARD (single button) ------------- */
         .cv-download-card {
             background: linear-gradient(100deg, #f4f9fd, #ffffff);
             display: flex;
             align-items: center;
-            justify-content: center;  /* Centered button */
+            justify-content: center;
             padding: 24px 32px;
         }
 
-        /* Primary button style */
         .btn {
             background-color: var(--color-primary);
             color: white;
@@ -166,7 +157,6 @@
             box-shadow: 0 12px 22px rgba(30,59,92,0.2);
         }
 
-        /* ------------- SECTION TITLES ------------- */
         .section-title {
             font-size: 1.6rem;
             font-weight: 600;
@@ -189,7 +179,6 @@
             opacity: 0.6;
         }
 
-        /* ------------- JOB HEADER (company + date) ------------- */
         .job-header {
             display: flex;
             flex-wrap: wrap;
@@ -230,7 +219,6 @@
             font-size: 1rem;
         }
 
-        /* ------------- CUSTOM LIST STYLES ------------- */
         ul {
             list-style: none;
             margin: 12px 0 8px;
@@ -253,7 +241,6 @@
             font-weight: 600;
         }
 
-        /* Nested lists for achievements – distinct bullet */
         .sub-list {
             margin-left: 18px;
             margin-top: 8px;
@@ -273,7 +260,6 @@
             color: #5f8ab0;
         }
 
-        /* ------------- MINI CARDS (education, certifications) ------------- */
         .edu-item, .cert-item, .lang-item, .research-item {
             background: #f9fcff;
             padding: 18px 22px;
@@ -288,7 +274,6 @@
             font-weight: 600;
         }
 
-        /* ------------- MINI GRID (research interests, etc.) ------------- */
         .grid-mini {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -312,71 +297,211 @@
             color: var(--color-accent);
         }
 
-        /* ------------- SOFT SEPARATOR ------------- */
         hr {
             border: 0;
             border-top: 1px solid rgba(58,110,165,0.1);
             margin: 30px 0 20px;
         }
 
-        /* ------------- RESPONSIVE BREAKPOINTS ------------- */
+        /* ------------- RESPONSIVE ------------- */
         @media screen and (max-width: 700px) {
-            body {
-                padding: 16px 12px;
-            }
-            section, .profile-header, .cv-download-card {
-                padding: 28px 20px;
-            }
-            .profile-name {
-                font-size: 1.9rem;
-            }
-            .profile-title {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 1.45rem;
-            }
-            .btn {
-                padding: 12px 28px;
-                width: 100%;
-                justify-content: center;
-            }
-            .job-header {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .date-badge {
-                align-self: flex-start;
-            }
+            body { padding: 16px 12px; }
+            section, .profile-header, .cv-download-card { padding: 28px 20px; }
+            .profile-name { font-size: 1.9rem; }
+            .profile-title { font-size: 1.1rem; }
+            .section-title { font-size: 1.45rem; }
+            .btn { padding: 12px 28px; width: 100%; justify-content: center; }
+            .job-header { flex-direction: column; gap: 8px; }
+            .date-badge { align-self: flex-start; }
         }
 
         @media screen and (max-width: 480px) {
-            .contact-grid {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            .profile-name {
-                font-size: 1.7rem;
-            }
+            .contact-grid { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .profile-name { font-size: 1.7rem; }
         }
 
+        /* ------------- PRINT STYLES – PROFESSIONAL PDF EXPORT ------------- */
         @media print {
-            body { background: white; padding: 0.5in; }
-            section, .profile-header { box-shadow: none; border: 1px solid #ddd; }
+            /* Force background colors to print */
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Reset page margins and background */
+            @page {
+                margin: 0.75in;
+                size: A4;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                color: black;
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            .container {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Hide interactive elements */
+            .cv-download-card,
+            .btn,
+            hr,
+            div[style*="text-align: center"] {  /* Footer */
+                display: none !important;
+            }
+
+            /* Remove card styles for clean print */
+            section, .profile-header {
+                box-shadow: none;
+                border: none;
+                background: white;
+                padding: 0.1in 0;
+                margin-bottom: 0.15in;
+                border-radius: 0;
+                backdrop-filter: none;
+            }
+
+            /* Adjust profile header */
+            .profile-header {
+                border-bottom: 2px solid #1e3b5c;
+                padding-bottom: 0.2in;
+                margin-bottom: 0.2in;
+            }
+
+            .profile-name {
+                color: black;
+                font-size: 24pt;
+                letter-spacing: -0.5px;
+            }
+
+            .profile-title {
+                border-left: 4px solid #3a6ea5;
+                color: #333;
+                background: none;
+                padding-left: 12px;
+                margin-top: 6px;
+            }
+
+            /* Convert accent colors to grayscale-friendly but keep structure */
+            .section-title {
+                color: black;
+                font-size: 16pt;
+                padding-bottom: 6px;
+                margin-bottom: 16px;
+            }
+
+            .section-title::after {
+                background: #1e3b5c;
+                opacity: 0.8;
+                width: 50px;
+                height: 2px;
+            }
+
+            /* Remove background from badges and mini cards */
+            .date-badge {
+                background: none;
+                border: 1px solid #aaa;
+                color: black;
+                padding: 2px 10px;
+                font-weight: normal;
+            }
+
+            .company {
+                color: #1e3b5c;
+                font-weight: 700;
+            }
+
+            /* Lists */
+            li {
+                color: black;
+                padding-left: 20px;
+                margin-bottom: 6px;
+            }
+
+            li:before {
+                color: #1e3b5c;
+            }
+
+            .sub-list li:before {
+                color: #1e3b5c;
+            }
+
+            /* Education and other mini-cards */
+            .edu-item {
+                background: none;
+                border-left: 3px solid #1e3b5c;
+                padding: 10px 0 10px 16px;
+                margin-bottom: 12px;
+                box-shadow: none;
+            }
+
+            .grid-mini .item {
+                background: none;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                padding: 6px 16px;
+                color: black;
+            }
+
+            .grid-mini i {
+                color: #1e3b5c;
+            }
+
+            /* Ensure links are printed as plain text */
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .contact-item a {
+                border-bottom: none;
+                color: black;
+            }
+
+            /* Prevent page breaks inside sections and list items */
+            h2, h3, .job-header, .edu-item, ul, li {
+                page-break-inside: avoid;
+            }
+
+            /* Force page breaks before major sections if needed */
+            section {
+                page-break-before: auto;
+            }
+
+            /* Keep profile and summary together */
+            .profile-header {
+                page-break-after: avoid;
+            }
+
+            /* Adjust spacing */
+            .job-header {
+                margin-top: 12px;
+            }
+
+            /* Remove icons from contact in print? optional */
+            .contact-item i {
+                color: black;
+                width: auto;
+                margin-right: 4px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- ========== PROFILE HEADER SECTION ========== -->
+        <!-- PROFILE HEADER -->
         <div class="profile-header">
             <h1 class="profile-name">Mohammed Seliem</h1>
             <div class="profile-title">
                 <span>Digital Transformation Consultant · PhD Researcher, Software Engineering (XAI)</span>
             </div>
-            
-            <!-- Contact information with icons for clarity -->
             <div class="contact-grid">
                 <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Riyadh, Saudi Arabia</span>
                 <span class="contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:+966546201266">+966 54 620 1266</a></span>
@@ -384,31 +509,29 @@
             </div>
         </div>
 
-        <!-- ========== SINGLE DOWNLOAD BUTTON CARD ========== -->
-        <!-- PDF download button – the link points to the actual CV file to be placed in the same repository -->
+        <!-- DOWNLOAD BUTTON (hidden in print) -->
         <div class="cv-download-card">
             <a href="Mohammed_Seliem_CV.pdf" download class="btn">
                 <i class="fas fa-file-pdf"></i> Download CV (PDF)
             </a>
         </div>
 
-        <!-- ========== PROFESSIONAL SUMMARY ========== -->
+        <!-- PROFESSIONAL SUMMARY -->
         <section>
             <h2 class="section-title">Professional Summary</h2>
-            <p style="margin-bottom: 18px; color: var(--color-text-soft); font-size: 1rem;">Digital Transformation Consultant and PhD Researcher in Software Engineering with extensive experience in business analysis, enterprise systems architecture, and AI-driven marketing automation. Proven ability to evaluate organizations holistically by analyzing business processes, operational workflows, market positioning, and digital maturity to design scalable, compliant, and value-driven digital solutions.</p>
+            <p style="margin-bottom: 18px; color: var(--color-text-soft);">Digital Transformation Consultant and PhD Researcher in Software Engineering with extensive experience in business analysis, enterprise systems architecture, and AI-driven marketing automation. Proven ability to evaluate organizations holistically by analyzing business processes, operational workflows, market positioning, and digital maturity to design scalable, compliant, and value-driven digital solutions.</p>
             <p style="margin-bottom: 18px; color: var(--color-text-soft);">Specialized in conducting on-site enterprise assessments, defining As-Is and To-Be enterprise architectures, and delivering structured digital transformation roadmaps aligned with business objectives, regulatory requirements, and client capabilities. Possesses strong expertise in ERP systems, enterprise software, data analysis, and system adoption strategies, supported by a deep understanding of market dynamics and customer behavior.</p>
             <p style="color: var(--color-text-soft);">Current doctoral research focuses on Explainable Artificial Intelligence (XAI), aiming to design highly interpretable AI models through an innovative sector-based methodology (Sector-X), bridging the gap between academic research and real-world enterprise adoption. Brings a multidisciplinary background in software engineering, UX/UI design, marketing strategy, and project management, enabling effective translation of complex business and research requirements into high-impact technical and strategic outcomes.</p>
         </section>
 
-        <!-- ========== CAREER OBJECTIVE ========== -->
+        <!-- CAREER OBJECTIVE -->
         <section>
             <h2 class="section-title">Career Objective</h2>
             <p style="color: var(--color-text-soft);">To leverage my combined expertise in digital transformation consulting, enterprise software architecture, and explainable artificial intelligence research to support organizations in optimizing operations, improving decision-making, and achieving sustainable growth through well-governed and interpretable digital solutions.</p>
             <p style="color: var(--color-text-soft); margin-top: 18px;">I seek to contribute to organizations that value the alignment of technology, business strategy, regulatory compliance, and market realities, while advancing applied research in trustworthy and transparent AI systems suitable for enterprise and regulated environments.</p>
         </section>
 
-        <!-- ========== TEACHING, TRAINING & PROFESSIONAL LECTURING ========== -->
-        <!-- Placed directly after Career Objective as requested -->
+        <!-- TEACHING, TRAINING & PROFESSIONAL LECTURING -->
         <section>
             <h2 class="section-title">Teaching, Training & Professional Lecturing</h2>
             <div class="edu-item" style="border-left-color: #4a7c9b; margin-bottom: 24px;">
@@ -425,7 +548,7 @@
             </div>
         </section>
 
-        <!-- ========== SOFTWARE ENGINEERING & PROJECT MANAGEMENT INSTRUCTIONAL CAPABILITY ========== -->
+        <!-- SOFTWARE ENGINEERING & PROJECT MANAGEMENT INSTRUCTIONAL CAPABILITY -->
         <section>
             <h2 class="section-title">Software Engineering & Project Management Instructional Capability</h2>
             <div class="edu-item" style="border-left-color: #4a7c9b;">
@@ -441,11 +564,10 @@
             </div>
         </section>
 
-        <!-- ========== PROFESSIONAL EXPERIENCE ========== -->
+        <!-- PROFESSIONAL EXPERIENCE -->
         <section>
             <h2 class="section-title">Professional Experience</h2>
             
-            <!-- Niyat (Current) -->
             <div style="margin-bottom: 40px;">
                 <div class="job-header">
                     <span class="company">Niyat – Saudi Arabia</span>
@@ -472,7 +594,6 @@
                 </ul>
             </div>
 
-            <!-- Techni IT Solutions -->
             <div style="margin-bottom: 40px;">
                 <div class="job-header">
                     <span class="company">Techni IT Solutions – Riyadh, Saudi Arabia</span>
@@ -494,7 +615,6 @@
                 </ul>
             </div>
 
-            <!-- Design Asset -->
             <div style="margin-bottom: 40px;">
                 <div class="job-header">
                     <span class="company">Design Asset – Riyadh, Saudi Arabia</span>
@@ -514,7 +634,6 @@
                 </ul>
             </div>
 
-            <!-- Compass Egypt -->
             <div style="margin-bottom: 8px;">
                 <div class="job-header">
                     <span class="company">Compass Egypt – Cairo, Egypt</span>
@@ -529,7 +648,7 @@
             </div>
         </section>
 
-        <!-- ========== EDUCATION ========== -->
+        <!-- EDUCATION -->
         <section>
             <h2 class="section-title">Education</h2>
             <div class="edu-item"><strong>PhD Researcher in Software Engineering</strong> | 2025 – Present<br>Faculty of Graduate Studies for Statistical Research, Cairo University<br>Research focus: Explainable AI (XAI) – Sector-X Methodology.</div>
@@ -538,7 +657,7 @@
             <div class="edu-item"><strong>B.Sc. in Hotel Management</strong> | 2004<br>Faculty of Tourism & Hotels, Helwan University, Egypt</div>
         </section>
 
-        <!-- ========== CERTIFICATIONS & LANGUAGES ========== -->
+        <!-- CERTIFICATIONS & LANGUAGES -->
         <section>
             <h2 class="section-title">Certifications & Languages</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
@@ -559,7 +678,7 @@
             </div>
         </section>
 
-        <!-- ========== RESEARCH INTERESTS ========== -->
+        <!-- RESEARCH INTERESTS -->
         <section>
             <h2 class="section-title">Research Interests</h2>
             <div class="grid-mini">
@@ -571,11 +690,10 @@
             </div>
         </section>
 
-        <!-- ========== FOOTER / SIGNATURE ========== -->
+        <!-- FOOTER (hidden in print) -->
         <div style="text-align: center; margin-top: 32px; color: var(--color-text-light); font-size: 0.85rem; border-top: 1px solid var(--color-border); padding-top: 24px;">
             <i class="fas fa-code-branch" style="margin: 0 4px;"></i> Mohammed Seliem · Digital Transformation & XAI Research · 2025 
         </div>
     </div>
-    <!-- End container -->
 </body>
 </html>
